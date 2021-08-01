@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crisfern </var/mail/crisfern>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:34:23 by crisfern          #+#    #+#             */
-/*   Updated: 2021/08/01 10:59:22 by crisfern         ###   ########.fr       */
+/*   Created: 2021/07/31 20:26:36 by crisfern          #+#    #+#             */
+/*   Updated: 2021/08/01 11:47:47 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*void	is_valid_arg(int argc, char **argv)
+void	push_a(t_list **lst_a, t_list **lst_b, int n_elem_a)
 {
-	int	i;
+	t_list	*aux;
 
-	while (argc > 1)
+	if (n_elem_a > 0)
 	{
-		i = 0;
-		while (argv[argc][i])
-		if (argv[argc][i])
-		argc--;
+		aux = *lst_a->next;
+		*lst_a->next = *lst_b;
+		*lst_b = *lst_a;
+		*lst_a = aux;
 	}
-}*/
-
-void	print_error(void)
-{
-	write(1, "Error", 5);
-	exit(0);
 }
 
-int	main(int argc, char **argv)
+void	push_b(t_list **lst_a, t_list **lst_b, int n_elem_b)
 {
-	if (argc < 2)
-		print_error();
-	else
+	t_list	*aux;
+
+	if (n_elem_b > 0)
 	{
-		printf("<%s>", argv[1]);
-		//lst = initial_list();
+		aux = *lst_b->next;
+		*lst_b->next = *lst_a;
+		*lst_a = *lst_b;
+		*lst_b = aux;
 	}
-	return (0);
 }
