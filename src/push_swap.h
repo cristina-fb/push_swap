@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crisfern </var/mail/crisfern>              +#+  +:+       +#+        */
+/*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:04:45 by crisfern          #+#    #+#             */
-/*   Updated: 2021/07/31 12:24:29 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/08/10 13:55:48 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,3 +19,10 @@
 
 #endif
 
+void	swap(t_list **lst, int n_elem);
+void	swap_ab(t_list **lst_a, t_list **lst_b, int n_elem_a, int n_elem_b);
+void	push(t_list **origin, t_list **end, int *n_elem_o, int *n_elem_e);
+void	rotate(t_list **lst, int n_elem);
+void	rotate_ab(t_list **lst_a, t_list **lst_b, int n_elem_a, int n_elem_b);
+void	r_rotate(t_list **lst, int n_elem);
+void	r_rotate_ab(t_list **lst_a, t_list **lst_b, int n_elem_a, int n_elem_b);

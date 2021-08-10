@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: crisfern </var/mail/crisfern>              +#+  +:+       +#+         #
+#    By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/31 10:28:47 by crisfern          #+#    #+#              #
-#    Updated: 2021/07/31 11:46:11 by crisfern         ###   ########.fr        #
+#    Updated: 2021/08/10 13:57:07 by crisfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_DIR = ./src/
 
 HEADER = push_swap.h
 
-SRC = push_swap.c
+SRC = push_swap.c ./src/movements1.c ./src/movements2.c
 
 OBJ = $(SRC:.c=.o)
 

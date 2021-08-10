@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crisfern </var/mail/crisfern>              +#+  +:+       +#+        */
+/*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 21:20:02 by crisfern          #+#    #+#             */
-/*   Updated: 2021/08/03 21:26:39 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/08/10 14:03:08 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ void	swap_ab(t_list **lst_a, t_list **lst_b, int n_elem_a, int n_elem_b)
 	swap(lst_b, n_elem_b);
 }
 
-void	push(t_list **origin, t_list **end, int n_elem_o, int n_elem_e)
+void	push(t_list **origin, t_list **end, int *n_elem_o, int *n_elem_e)
 {
 	t_list	*aux;
 
 	aux = NULL;
-	if (n_elem_o > 0)
+	if (*n_elem_o > 0)
 	{
 		aux = origin[0]->next;
 		origin[0]->next = end[0];
 		end[0] = origin[0];
 		origin[0] = aux;
-		n_elem_o--;
-		n_elem_e++;
+		*n_elem_o -= 1;
+		*n_elem_e += 1;
 	}
 }
