@@ -6,7 +6,7 @@
 #    By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/31 10:28:47 by crisfern          #+#    #+#              #
-#    Updated: 2021/08/10 13:57:07 by crisfern         ###   ########.fr        #
+#    Updated: 2021/08/11 15:48:11 by crisfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_DIR = ./src/
 
 HEADER = push_swap.h
 
-SRC = push_swap.c ./src/movements1.c ./src/movements2.c
+SRC = push_swap.c ./src/movements1.c ./src/movements2.c ./src/list.c
 
 OBJ = $(SRC:.c=.o)
 
