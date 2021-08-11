@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:34:23 by crisfern          #+#    #+#             */
-/*   Updated: 2021/08/11 15:56:51 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/08/11 16:09:30 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	print_error(void)
 	exit(0);
 }
 
+int	ft_isspace(char c)
+{
+	return ((c == '\n') || (c == '\v') || (c == '\f')
+		|| (c == '\r') || (c == '\t') || (c == ' '));
+}
+
 int	is_valid_arg(int argc, char **argv)
 {
 	int i;
@@ -27,12 +33,14 @@ int	is_valid_arg(int argc, char **argv)
 		i = 0;
 		while (argv[argc - 1][i])
 		{
-			if (!ft_isdigit(argv[argc - 1][i]) || (argv[argc - 1][i] != '+') || (argv[argc - 1][i] != '-'))
-				print_error();
+			if (!(ft_isdigit(argv[argc - 1][i]) || (argv[argc - 1][i] == '+') ||
+			(argv[argc - 1][i] == '-') || ft_isspace(argv[argc - 1][i])))
+				return (0);
 			i++;
 		}
 		argc--;
 	}
+	return (1);
 }
 
 void	get_args(int argc, char **argv, t_list **lst)
