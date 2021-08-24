@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crisfern <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 13:35:09 by crisfern          #+#    #+#             */
-/*   Updated: 2021/07/31 11:17:27 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/08/24 14:40:28 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int				i;
-	int				neg;
-	unsigned int	num;
+	int		i;
+	int		neg;
+	long	num;
 
 	i = 0;
 	neg = 0;
@@ -32,11 +32,7 @@ int	ft_atoi(const char *str)
 	}
 	while ((str[i] >= '0') && (str[i] <= '9'))
 		num = (num * 10) + str[i++] - 48;
-	if ((num > 2147483647) && (!neg))
-		return (-1);
-	else if ((num > 2147483648) && (neg))
-		return (0);
-	else if (neg)
-		num = ((int) num) * -1;
+	if (neg)
+		num = ((long) num) * -1;
 	return (num);
 }

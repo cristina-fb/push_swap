@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:34:23 by crisfern          #+#    #+#             */
-/*   Updated: 2021/08/11 16:09:30 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/08/24 15:36:35 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,28 @@ void	print_error(void)
 	exit(0);
 }
 
-int	ft_isspace(char c)
-{
-	return ((c == '\n') || (c == '\v') || (c == '\f')
-		|| (c == '\r') || (c == '\t') || (c == ' '));
-}
-
 int	is_valid_arg(int argc, char **argv)
 {
-	int i;
+	char	*ptr;
 
 	while (argc > 1)
 	{
-		i = 0;
-		while (argv[argc - 1][i])
+		ptr = argv[argc - 1];
+		while (*ptr)
 		{
-			if (!(ft_isdigit(argv[argc - 1][i]) || (argv[argc - 1][i] == '+') ||
-			(argv[argc - 1][i] == '-') || ft_isspace(argv[argc - 1][i])))
+			if ((ft_atoi(ptr) > INT_MAX) || (ft_atoi(ptr) < INT_MIN))
 				return (0);
-			i++;
+			if (((*ptr == '+') || (*ptr == '-')) && ft_isdigit(*(ptr + 1)))
+				ptr++;
+			else if (((*ptr == '+') || (*ptr == '-'))
+				&& !ft_isdigit(*(ptr + 1)))
+				return (0);
+			while (ft_isdigit(*ptr))
+				ptr++;
+			while (*ptr == ' ')
+				ptr++;
+			if (*ptr && !ft_isdigit(*ptr) && (*ptr != '+') && (*ptr != '-'))
+				return (0);
 		}
 		argc--;
 	}
@@ -66,18 +69,42 @@ void	get_args(int argc, char **argv, t_list **lst)
 	}
 }
 
+void	repeated_elements(t_list **lst)
+{
+	t_list	*aux1;
+	t_list	*aux2;
+	int		element;
+
+	aux1 = *lst;
+	while (aux1)
+	{
+		element = *(int *)aux1->content;
+		aux2 = aux1->next;
+		while (aux2)
+		{
+			if (*(int *)aux2->content == element)
+			{
+				free_list(lst);
+				print_error();
+			}
+			aux2 = aux2->next;
+		}
+		aux1 = aux1->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*lst;
 
-	if ((argc < 2) || !is_valid_arg(argc, argv))
+	if ((argc < 1) || !is_valid_arg(argc, argv))
 		print_error();
 	else
 	{
 		get_args(argc, argv, &lst);
+		repeated_elements(&lst);
 		print_list(&lst);
-		//free_list(&lst);
+		free_list(&lst);
 	}
-	//system("leaks push_swap");
 	return (0);
 }

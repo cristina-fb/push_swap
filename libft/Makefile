@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: crisfern <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/02 09:35:52 by crisfern          #+#    #+#              #
-#    Updated: 2021/07/31 11:15:46 by crisfern         ###   ########.fr        #
+#    Updated: 2021/08/24 13:12:35 by crisfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ SRC = ft_memset.c \
 		ft_strlcat.c \
 		ft_strchr.c \
 		ft_strrchr.c \
-		ft_strnstr.c \
 		ft_strncmp.c \
 		ft_atoi.c \
 		ft_isalpha.c \
@@ -59,8 +58,7 @@ SRC = ft_memset.c \
 		ft_lstadd_back.c \
 		ft_lstdelone.c \
 		ft_lstclear.c \
-		ft_lstiter.c \
-		ft_lstmap.c
+		ft_lstiter.c
 
 OBJ = $(SRC:.c=.o)
 
