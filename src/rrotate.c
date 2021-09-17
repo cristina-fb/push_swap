@@ -1,39 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements2.c                                       :+:      :+:    :+:   */
+/*   rrotate.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crisfern </var/mail/crisfern>              +#+  +:+       +#+        */
+/*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 21:26:49 by crisfern          #+#    #+#             */
-/*   Updated: 2021/08/03 21:34:58 by crisfern         ###   ########.fr       */
+/*   Created: 2021/08/03 21:20:02 by crisfern          #+#    #+#             */
+/*   Updated: 2021/09/17 12:07:50 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	rotate(t_list **lst, int n_elem)
-{
-	t_list	*aux;
-	
-	aux = NULL;
-	if (n_elem > 1)
-	{
-		aux = lst[0];
-		while (aux->next)
-			aux = aux->next;
-		aux->next = lst[0];
-		aux = lst[0];
-		lst[0] = lst[0]->next;
-		aux->next = NULL;
-	}
-}
-
-void	rotate_ab(t_list **lst_a, t_list **lst_b, int n_elem_a, int n_elem_b)
-{
-	rotate(lst_a, n_elem_a);
-	rotate(lst_b, n_elem_b);
-}
 
 void	r_rotate(t_list **lst, int n_elem)
 {
@@ -54,8 +31,21 @@ void	r_rotate(t_list **lst, int n_elem)
 	}
 }
 
+void	r_rotate_a(t_list **lst, int n_elem)
+{
+	r_rotate(lst, n_elem);
+	write(1, "rra\n", 4);
+}
+
+void	r_rotate_b(t_list **lst, int n_elem)
+{
+	r_rotate(lst, n_elem);
+	write(1, "rrb\n", 4);
+}
+
 void	r_rotate_ab(t_list **lst_a, t_list **lst_b, int n_elem_a, int n_elem_b)
 {
 	r_rotate(lst_a, n_elem_a);
 	r_rotate(lst_b, n_elem_b);
+	write(1, "rrr\n", 4);
 }

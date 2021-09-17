@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements1.c                                       :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 21:20:02 by crisfern          #+#    #+#             */
-/*   Updated: 2021/08/10 14:03:08 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/17 12:06:45 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,21 @@ void	swap(t_list **lst, int n_elem)
 	}
 }
 
+void	swap_a(t_list **lst, int n_elem)
+{
+	swap(lst, n_elem);
+	write(1, "sa\n", 3);
+}
+
+void	swap_b(t_list **lst, int n_elem)
+{
+	swap(lst, n_elem);
+	write(1, "sb\n", 3);
+}
+
 void	swap_ab(t_list **lst_a, t_list **lst_b, int n_elem_a, int n_elem_b)
 {
 	swap(lst_a, n_elem_a);
 	swap(lst_b, n_elem_b);
-}
-
-void	push(t_list **origin, t_list **end, int *n_elem_o, int *n_elem_e)
-{
-	t_list	*aux;
-
-	aux = NULL;
-	if (*n_elem_o > 0)
-	{
-		aux = origin[0]->next;
-		origin[0]->next = end[0];
-		end[0] = origin[0];
-		origin[0] = aux;
-		*n_elem_o -= 1;
-		*n_elem_e += 1;
-	}
+	write(1, "ss\n", 3);
 }

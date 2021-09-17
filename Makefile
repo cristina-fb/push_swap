@@ -6,7 +6,7 @@
 #    By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/31 10:28:47 by crisfern          #+#    #+#              #
-#    Updated: 2021/08/11 15:48:11 by crisfern         ###   ########.fr        #
+#    Updated: 2021/09/17 14:34:18 by crisfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME = push_swap
 CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
-
 LIBFT = libft.a
 
 LIBFT_DIR = ./libft/
@@ -24,7 +23,7 @@ SRC_DIR = ./src/
 
 HEADER = push_swap.h
 
-SRC = push_swap.c ./src/movements1.c ./src/movements2.c ./src/list.c
+SRC = push_swap.c ./src/push.c ./src/swap.c ./src/rotate.c ./src/rrotate.c ./src/list.c ./src/find_in_list.c ./src/sort.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -43,5 +42,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	make fclean -C $(LIBFT_DIR)
+
+re: fclean all
 
 .PHONY: all fclean clean make_libft
