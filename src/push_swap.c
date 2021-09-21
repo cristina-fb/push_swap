@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:34:23 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/17 16:40:50 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/21 13:53:48 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,11 +112,11 @@ int	main(int argc, char **argv)
 			sort_3n(&lst, n_elem);
 		else if ((n_elem > 3) && (n_elem <= 5))
 			sort_5n(&lst, n_elem);
-		/*else if ((n_elem > 5) && (n_elem <= 100))
+		else if ((n_elem > 5) && (n_elem <= 100))
 			sort_100n(&lst, n_elem);
-		else if (n_elem > 100)
+		/*else if (n_elem > 100)
 			sort_500n(&lst, n_elem);*/
-		//print_list(&lst);
+		print_list(&lst);
 		free_list(&lst);
 	}
 	return (0);
