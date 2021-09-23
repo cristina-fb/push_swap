@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 21:20:02 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/17 16:40:26 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/23 10:31:32 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	find_min_max(t_list **lst, int min)
 	return (n);
 }
 
-int	find_pos_insert(t_list **lst, int n)
+int	find_pos_insert(t_list **lst, int n, int n_elem)
 {
 	t_list	*aux;
 	int		pos;
@@ -52,21 +52,24 @@ int	find_pos_insert(t_list **lst, int n)
 		while (aux->next)
 		{
 			if ((n > find_min_max(lst, 0)) || (n < find_min_max(lst, 1)))
-				return (find_position(lst, find_min_max(lst, 1)));
+				return (find_position(lst, find_min_max(lst, 1), n_elem));
 			else
 			{
 				if (((*(int *)aux->content) < n)
 					&& ((*(int *)aux->next->content) > n))
-					return (pos + 1);
+					break ;
 			}
 			aux = aux->next;
 			pos++;
 		}
+		if (++pos > n_elem / 2)
+			pos = (n_elem - pos) * (-1);
+		return (pos);
 	}
 	return (0);
 }
 
-int	find_position(t_list **lst, int n)
+int	find_position(t_list **lst, int n, int n_elem)
 {
 	t_list	*aux;
 	int		pos;
@@ -76,9 +79,11 @@ int	find_position(t_list **lst, int n)
 	while (aux)
 	{
 		if ((*(int *)aux->content) == n)
-			return (pos);
+			break ;
 		aux = aux->next;
 		pos++;
 	}
+	if (pos > n_elem / 2)
+		pos = (n_elem - pos) * (-1);
 	return (pos);
 }

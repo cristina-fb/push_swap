@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:04:45 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/17 13:47:25 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/23 09:51:35 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 int     get_args(int argc, char **argv, t_list **lst);
 int     is_valid_arg(int argc, char **argv);
 int     is_sorted(t_list **lst);
-int     find_position(t_list **lst, int n);
-int     find_pos_insert(t_list **lst, int n);
+int     find_position(t_list **lst, int n, int n_elem);
+int     find_pos_insert(t_list **lst, int n, int n_elem);
 int     find_min_max(t_list **lst, int min);
 
 void	sort_3n(t_list **lst, int n_elem);
