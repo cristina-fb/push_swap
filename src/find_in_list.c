@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 21:20:02 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/23 10:31:32 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/24 12:16:27 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,21 @@ int	find_position(t_list **lst, int n, int n_elem)
 	if (pos > n_elem / 2)
 		pos = (n_elem - pos) * (-1);
 	return (pos);
+}
+
+int	find_number(t_list **lst, int pos)
+{
+	t_list	*aux;
+	int		i;
+
+	i = 0;
+	aux = *lst;
+	while (aux)
+	{
+		if (i == pos)
+			return (*(int *)aux->content);
+		aux = aux->next;
+		i++;
+	}
+	return (0);
 }
