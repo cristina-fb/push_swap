@@ -19,15 +19,12 @@ void	free_list(t_list **lst)
 	}
 }
 
-void	print_list(t_list **lst)
+void	print_list(t_list *lst)
 {
-	t_list	*aux;
-
-	aux = lst[0];
-	while (aux)
+	while (lst)
 	{
-		printf("%d\n", *(int *)aux->content);
-		aux = aux->next;
+		printf("%d\n", *(int *)lst->content);
+		lst = lst->next;
 	}
 }
 

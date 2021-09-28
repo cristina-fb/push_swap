@@ -6,7 +6,7 @@
 #    By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/31 10:28:47 by crisfern          #+#    #+#              #
-#    Updated: 2021/09/24 11:08:49 by crisfern         ###   ########.fr        #
+#    Updated: 2021/09/28 13:58:03 by crisfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = 
 LIBFT = libft.a
 
 LIBFT_DIR = ./libft/
