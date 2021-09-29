@@ -6,11 +6,18 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 21:20:02 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/28 15:46:15 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/29 11:24:21 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_abs(int n)
+{
+	if (n < 0)
+		return (n * -1);
+	return (n);
+}
 
 void	rotate_to_pos_a(t_list **lst, int pos)
 {
@@ -63,7 +70,9 @@ void	rotate_2list(t_list **lst_a, t_list **lst_b, int pos_a, int pos_b)
 	}
 	else
 	{
-		if (((pos_a > pos_b) && (pos_a >= 0) && (pos_b >= 0))
+		if (pos_a == pos_b)
+			rotate_to_pos_ab(lst_a, lst_b, pos_a);
+		else if (((pos_a > pos_b) && (pos_a >= 0) && (pos_b >= 0))
 			|| ((pos_b > pos_a) && (pos_b < 0) && (pos_a < 0)))
 		{
 			rotate_to_pos_ab(lst_a, lst_b, pos_b);
@@ -87,17 +96,18 @@ int	get_pos_mov(t_list *lst_a, t_list *lst_b, int n_elem_a, int n_elem_b)
 	
 	pos_min = 0;
 	pos = -1;
-	n_mov_min = get_n_mov(lst_b, n_elem_b, 0, find_number(lst_a, 0, n_elem_a));
+	n_mov_min = n_elem_a;
 	while (lst_a)
 	{
-		if (++pos < n_mov_min)
+		if (++pos > (n_elem_a / 2))
+			pos = (n_elem_a - pos) * (-1);
+		if (ft_abs(pos) < ft_abs(n_mov_min))
 		{
-			if (pos > (n_elem_a / 2))
-				pos = (n_elem_a - pos) * (-1);
-			a = find_number(lst_a, pos, n_elem_a);
-			if (get_n_mov(lst_b, n_elem_b, pos, a) < n_mov_min)
+			a = find_number(lst_a, 0, n_elem_a);
+			//printf("%d(%d).", get_n_mov(lst_b, n_elem_b, pos, a), a);
+			if (ft_abs(get_n_mov(lst_b, n_elem_b, pos, a)) < n_mov_min)
 			{
-				n_mov_min = get_n_mov(lst_b, n_elem_b, pos, a);
+				n_mov_min = ft_abs(get_n_mov(lst_b, n_elem_b, pos, a));
 				pos_min = pos;
 			}
 		}
@@ -111,18 +121,11 @@ int	get_n_mov(t_list *lst_b, int n_elem_b, int pos_a, int a)
 	int	pos_b;
 
 	pos_b = find_pos_insert_b(lst_b, a, n_elem_b);
-	if ((pos_a >= 0) && (pos_b < 0))
-		return (pos_a + (-1 * pos_b));
-	else if ((pos_b >= 0) && (pos_a < 0))
-		return ((-1 * pos_a) + pos_b);
-	else
-	{
-		if (((pos_a > pos_b) && (pos_a >= 0) && (pos_b >= 0))
-			|| ((pos_b > pos_a) && (pos_b < 0) && (pos_a < 0)))
-			return (pos_a);
-		else if (((pos_b > pos_a) && (pos_b >= 0) && (pos_a >= 0))
-			|| ((pos_a > pos_b) && (pos_b < 0) && (pos_a < 0)))
-			return (pos_b);
-	}
+	if (((pos_a >= 0) && (pos_b < 0)) || ((pos_b >= 0) && (pos_a < 0)))
+		return (ft_abs(pos_a) + ft_abs(pos_b));
+	else if (ft_abs(pos_a) >= ft_abs(pos_b))
+		return (pos_a);
+	else if (ft_abs(pos_a) < ft_abs(pos_b))
+		return (pos_b);
 	return (0);
 }

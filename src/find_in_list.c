@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 21:20:02 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/28 15:06:00 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/29 10:37:51 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,26 @@
 int	find_min_max(t_list *lst, int min)
 {
 	int		n;
+	t_list	*aux;
 
-	n = *(int *)lst->content;
+	aux = lst;
+	n = *(int *)aux->content;
 	if (min)
 	{
-		while (lst->next)
+		while (aux->next)
 		{
-			if ((*(int *)lst->next->content) < n)
-				n = *(int *)lst->next->content;
-			lst = lst->next;
+			if ((*(int *)aux->next->content) < n)
+				n = *(int *)aux->next->content;
+			aux = aux->next;
 		}
 	}
 	else
 	{
-		while (lst->next)
+		while (aux->next)
 		{
-			if ((*(int *)lst->next->content) > n)
-				n = *(int *)lst->next->content;
-			lst = lst->next;
+			if ((*(int *)aux->next->content) > n)
+				n = *(int *)aux->next->content;
+			aux = aux->next;
 		}
 	}
 	return (n);
@@ -41,21 +43,23 @@ int	find_min_max(t_list *lst, int min)
 int	find_pos_insert_a(t_list *lst, int n, int n_elem)
 {
 	int		pos;
+	t_list	*aux;
 
 	pos = 0;
-	if (lst)
+	aux = lst;
+	if (aux)
 	{
-		while (lst->next)
+		while (aux->next)
 		{
-			if ((n > find_min_max(lst, 0)) || (n < find_min_max(lst, 1)))
-				return (find_position(lst, find_min_max(lst, 1), n_elem));
+			if ((n > find_min_max(aux, 0)) || (n < find_min_max(aux, 1)))
+				return (find_position(aux, find_min_max(aux, 1), n_elem));
 			else
 			{
-				if (((*(int *)lst->content) < n)
-					&& ((*(int *)lst->next->content) > n))
+				if (((*(int *)aux->content) < n)
+					&& ((*(int *)aux->next->content) > n))
 					break ;
 			}
-			lst = lst->next;
+			aux = aux->next;
 			pos++;
 		}
 		if (++pos > n_elem / 2)
@@ -68,21 +72,23 @@ int	find_pos_insert_a(t_list *lst, int n, int n_elem)
 int	find_pos_insert_b(t_list *lst, int n, int n_elem)
 {
 	int		pos;
+	t_list	*aux;
 
 	pos = 0;
-	if (lst)
+	aux = lst;
+	if (aux)
 	{
-		while (lst->next)
+		while (aux->next)
 		{
-			if ((n > find_min_max(lst, 0)) || (n < find_min_max(lst, 1)))
-				return (find_position(lst, find_min_max(lst, 0), n_elem));
+			if ((n > find_min_max(aux, 0)) || (n < find_min_max(aux, 1)))
+				return (find_position(aux, find_min_max(aux, 0), n_elem));
 			else
 			{
-				if (((*(int *)lst->content) > n)
-					&& ((*(int *)lst->next->content) < n))
+				if (((*(int *)aux->content) > n)
+					&& ((*(int *)aux->next->content) < n))
 					break ;
 			}
-			lst = lst->next;
+			aux = aux->next;
 			pos++;
 		}
 		if (++pos > n_elem / 2)
@@ -95,13 +101,15 @@ int	find_pos_insert_b(t_list *lst, int n, int n_elem)
 int	find_position(t_list *lst, int n, int n_elem)
 {
 	int		pos;
+	t_list	*aux;
 
 	pos = 0;
-	while (lst)
+	aux = lst;
+	while (aux)
 	{
-		if ((*(int *)lst->content) == n)
+		if ((*(int *)aux->content) == n)
 			break ;
-		lst = lst->next;
+		aux = aux->next;
 		pos++;
 	}
 	if (pos > n_elem / 2)
@@ -112,15 +120,17 @@ int	find_position(t_list *lst, int n, int n_elem)
 int	find_number(t_list *lst, int pos, int n_elem)
 {
 	int		i;
+	t_list	*aux;
 
 	i = 0;
+	aux = lst;
 	if (pos < 0)
 		pos = n_elem + pos;
-	while (lst)
+	while (aux)
 	{
 		if (i == pos)
-			return (*(int *)lst->content);
-		lst = lst->next;
+			return (*(int *)aux->content);
+		aux = aux->next;
 		i++;
 	}
 	return (0);

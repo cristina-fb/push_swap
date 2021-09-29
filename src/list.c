@@ -21,10 +21,13 @@ void	free_list(t_list **lst)
 
 void	print_list(t_list *lst)
 {
-	while (lst)
+	t_list	*aux;
+
+	aux = lst;
+	while (aux)
 	{
-		printf("%d\n", *(int *)lst->content);
-		lst = lst->next;
+		printf("%d\n", *(int *)aux->content);
+		aux = aux->next;
 	}
 }
 
