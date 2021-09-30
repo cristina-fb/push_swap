@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:04:45 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/29 10:52:50 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:14:08 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ void	sort_3n(t_list **lst);
 void	sort_5n(t_list **lst_a, int n_elem_a);
 void	sort_100n(t_list **lst_a, int n_elem_a);
 
-int	is_valid_arg(int argc, char **argv);
-int	get_args(int argc, char **argv, t_list **lst);
-int	is_sorted(t_list *lst);
-int	ft_abs(int n);
+int		is_valid_arg(int argc, char **argv);
+int		get_args(int argc, char **argv, t_list **lst);
+int		is_sorted(t_list *lst);
+int		ft_abs(int n);
 
-int	find_min_max(t_list *lst, int min);
-int	find_number(t_list *lst, int pos, int n_elem);
-int	find_position(t_list *lst, int n, int n_elem);
-int	find_pos_insert_a(t_list *lst, int n, int n_elem);
-int	find_pos_insert_b(t_list *lst, int n, int n_elem);
-int	get_pos_mov(t_list *lst_a, t_list *lst_b, int n_elem_a, int n_elem_b);
-int	get_n_mov(t_list *lst_b, int n_elem_b, int pos_a, int a);
+int		find_min_max(t_list *lst, int min);
+int		find_number(t_list *lst, int pos, int n_elem);
+int		find_position(t_list *lst, int n, int n_elem);
+int		find_pos_insert_a(t_list *lst, int n, int n_elem);
+int		find_pos_insert_b(t_list *lst, int n, int n_elem);
+int		get_pos_mov(t_list *lst_a, t_list *lst_b, int n_elem_a, int n_elem_b);
+int		get_n_mov(t_list *lst_b, int n_elem_b, int pos_a, int a);
 #endif

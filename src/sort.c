@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:34:23 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/29 11:24:35 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/30 12:19:26 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,17 @@ void	sort_100n(t_list **lst_a, int n_elem_a)
 	int		min;
 	int		pos_a;
 	int		pos_b;
-	
+
 	n_elem_b = 0;
 	if (!is_sorted(*lst_a))
 	{
 		while (n_elem_a)
 		{
 			pos_a = get_pos_mov(*lst_a, lst_b, n_elem_a, n_elem_b);
-			pos_b = find_pos_insert_b(lst_b, find_number(*lst_a, pos_a, n_elem_a), n_elem_b);
-			//printf("--- %d %d---\n", pos_a, pos_b);
+			pos_b = find_pos_insert_b(lst_b, \
+			find_number(*lst_a, pos_a, n_elem_a), n_elem_b);
 			rotate_2list(lst_a, &lst_b, pos_a, pos_b);
 			push_b(lst_a, &lst_b, &n_elem_a, &n_elem_b);
-			//print_list(lst_b);
 		}
 		while (n_elem_b > 0)
 			push_a(&lst_b, lst_a, &n_elem_b, &n_elem_a);

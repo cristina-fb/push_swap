@@ -6,16 +6,28 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:34:23 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/29 15:44:29 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/09/30 13:22:02 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(void)
+void	free_list(t_list **lst)
 {
-	write(1, "Error", 5);
-	exit(0);
+	t_list	*aux1;
+	t_list	*aux2;
+
+	aux1 = lst[0];
+	if (lst[0])
+	{
+		while (aux1)
+		{
+			free(aux1->content);
+			aux2 = aux1;
+			aux1 = aux1->next;
+			free(aux2);
+		}
+	}
 }
 
 int	is_valid_arg(int argc, char **argv)
@@ -112,11 +124,8 @@ int	main(int argc, char **argv)
 			sort_3n(&lst);
 		else if ((n_elem > 3) && (n_elem <= 5))
 			sort_5n(&lst, n_elem);
-		else if ((n_elem > 5) && (n_elem <= 100))
+		else if (n_elem > 5)
 			sort_100n(&lst, n_elem);
-		/*else if (n_elem > 100)
-			sort_500n(&lst, n_elem);*/
-		//print_list(lst);
 		free_list(&lst);
 	}
 	return (0);
