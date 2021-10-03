@@ -6,7 +6,7 @@
 /*   By: crisfern <crisfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 11:34:23 by crisfern          #+#    #+#             */
-/*   Updated: 2021/09/30 13:22:02 by crisfern         ###   ########.fr       */
+/*   Updated: 2021/10/03 11:50:02 by crisfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ int	is_valid_arg(int argc, char **argv)
 	while (argc > 1)
 	{
 		ptr = argv[argc - 1];
+		if (!*ptr)
+			return (0);
 		while (*ptr)
 		{
 			if ((ft_atoi(ptr) > INT_MAX) || (ft_atoi(ptr) < INT_MIN))
 				return (0);
 			if (((*ptr == '+') || (*ptr == '-')) && ft_isdigit(*(ptr + 1)))
 				ptr++;
-			else if (((*ptr == '+') || (*ptr == '-'))
-				&& !ft_isdigit(*(ptr + 1)))
+			else if ((*ptr == '+' || *ptr == '-') && !ft_isdigit(*(ptr + 1)))
 				return (0);
 			while (ft_isdigit(*ptr))
 				ptr++;
@@ -123,7 +124,9 @@ int	main(int argc, char **argv)
 		if ((n_elem > 1) && (n_elem <= 3))
 			sort_3n(&lst);
 		else if ((n_elem > 3) && (n_elem <= 5))
+		{
 			sort_5n(&lst, n_elem);
+		}
 		else if (n_elem > 5)
 			sort_100n(&lst, n_elem);
 		free_list(&lst);
